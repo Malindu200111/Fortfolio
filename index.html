@@ -31,6 +31,7 @@
             position: sticky;
             top: 0;
             z-index: 100;
+            border-bottom: 1px solid rgba(0, 212, 255, 0.1);
         }
 
         .logo {
@@ -73,21 +74,35 @@
             width: 100%;
         }
 
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 6px;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: #00d4ff;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
         /* Hero Section */
         .hero {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 80px 50px;
+            padding: 60px 50px;
             min-height: 90vh;
-            position: relative;
-            overflow: hidden;
+            gap: 40px;
         }
 
         .hero-content {
             flex: 1;
             z-index: 2;
-            max-width: 600px;
+            min-width: 300px;
         }
 
         .hero-content h1 {
@@ -122,13 +137,12 @@
             padding: 15px 40px;
             font-size: 16px;
             font-weight: 600;
-            border: none;
+            border: 2px solid #00d4ff;
             border-radius: 8px;
             cursor: pointer;
             transition: all 0.3s ease;
             text-decoration: none;
             display: inline-block;
-            border: 2px solid #00d4ff;
             background: transparent;
             color: #00d4ff;
         }
@@ -156,6 +170,7 @@
         .social-links {
             display: flex;
             gap: 20px;
+            flex-wrap: wrap;
         }
 
         .social-links a {
@@ -178,45 +193,36 @@
             transform: translateY(-5px);
         }
 
-        
         /* Hero Image */
-.hero-image {
-    flex: 1;
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 500px; /* Reduced height */
-    margin-top: -150px; /* Moves image UP */
-}
-
-.hero-image-placeholder {
-    width: 850px;
-    height: 1000px;
-    display: flex;
-    align-items: flex-start;
-    justify-content: center;
-    position: relative;
-    overflow: hidden;
-    border-radius: 20px;
-    margin-top: -300px; /* Extra lift upwards */
-}
-
-.hero-image-placeholder img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 18px;
-}
-
-        @keyframes shimmer {
-            0% {
-                left: -100%;
-            }
-            100% {
-                left: 100%;
-            }
+        .hero-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-width: 300px;
         }
+
+        .hero-image-placeholder {
+            width: 100%;
+            max-width: 450px;
+            height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 212, 255, 0.2);
+            border: 2px solid rgba(0, 212, 255, 0.1);
+        }
+
+        .hero-image-placeholder img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 18px;
+        }
+
         /* Modal */
         .modal {
             display: none;
@@ -238,10 +244,10 @@
             to {
                 opacity: 1;
             }
-        }background: rgba(10, 22, 40, 0.8);
+        }
 
         .modal-content {
-            background: linear-gradient(135deg, rgba(10, 22, 40, 0.8) 0%, #0f1f35 100%);
+            background: linear-gradient(135deg, rgba(10, 22, 40, 0.95) 0%, #0f1f35 100%);
             margin: auto;
             padding: 40px;
             width: 90%;
@@ -340,23 +346,80 @@
             color: #0a1628;
         }
 
-        @media (max-width: 768px) {
+        /* Tablet (768px - 1024px) */
+        @media (max-width: 1024px) {
             nav {
                 padding: 20px 30px;
-                flex-direction: column;
-                gap: 20px;
             }
 
             .nav-links {
-                gap: 20px;
+                gap: 30px;
+            }
+
+            .hero {
+                padding: 50px 30px;
+                gap: 30px;
+            }
+
+            .hero-content h1 {
+                font-size: 48px;
+            }
+
+            .hero-content .title {
+                font-size: 28px;
+            }
+
+            .hero-image-placeholder {
+                max-width: 350px;
+                height: 400px;
+            }
+        }
+
+        /* Mobile (max-width: 768px) */
+        @media (max-width: 768px) {
+            nav {
+                padding: 15px 20px;
                 flex-wrap: wrap;
-                justify-content: center;
+            }
+
+            .logo {
+                font-size: 24px;
+                order: 1;
+                flex: 0 0 100%;
+            }
+
+            .hamburger {
+                display: flex;
+                order: 2;
+            }
+
+            .nav-links {
+                display: none;
+                gap: 0;
+                flex: 0 0 100%;
+                flex-direction: column;
+                margin-top: 15px;
+                order: 3;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links a {
+                padding: 10px 0;
+                border-bottom: 1px solid rgba(0, 212, 255, 0.1);
             }
 
             .hero {
                 flex-direction: column;
-                padding: 40px 20px;
+                padding: 30px 20px;
                 text-align: center;
+                min-height: auto;
+            }
+
+            .hero-content {
+                width: 100%;
             }
 
             .hero-content h1 {
@@ -364,25 +427,113 @@
             }
 
             .hero-content .title {
-                font-size: 24px;
+                font-size: 22px;
+            }
+
+            .hero-content p {
+                font-size: 14px;
+                margin-bottom: 30px;
             }
 
             .button-group {
                 justify-content: center;
+                gap: 10px;
+            }
+
+            .btn {
+                padding: 12px 30px;
+                font-size: 14px;
+                flex: 1;
+                min-width: 160px;
             }
 
             .social-links {
                 justify-content: center;
+                margin-bottom: 20px;
             }
 
             .hero-image {
-                height: 300px;
+                width: 100%;
             }
 
             .hero-image-placeholder {
-                width: 280px;
+                max-width: 100%;
+                width: 100%;
                 height: 350px;
-                font-size: 80px;
+            }
+
+            .modal-content {
+                width: 85%;
+                padding: 30px;
+            }
+        }
+
+        /* Small Mobile (max-width: 480px) */
+        @media (max-width: 480px) {
+            nav {
+                padding: 12px 15px;
+            }
+
+            .logo {
+                font-size: 20px;
+            }
+
+            .hero {
+                padding: 20px 15px;
+            }
+
+            .hero-content h1 {
+                font-size: 28px;
+                margin-bottom: 5px;
+            }
+
+            .hero-content .title {
+                font-size: 18px;
+                margin-bottom: 20px;
+            }
+
+            .hero-content p {
+                font-size: 13px;
+                margin-bottom: 25px;
+            }
+
+            .button-group {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .btn {
+                width: 100%;
+                padding: 12px 20px;
+                font-size: 13px;
+            }
+
+            .social-links {
+                gap: 12px;
+            }
+
+            .social-links a {
+                width: 45px;
+                height: 45px;
+                font-size: 16px;
+            }
+
+            .hero-image-placeholder {
+                height: 300px;
+            }
+
+            .modal-content {
+                width: 90%;
+                padding: 25px;
+            }
+
+            .modal h2 {
+                font-size: 20px;
+            }
+
+            .modal-btn {
+                padding: 10px 20px;
+                font-size: 13px;
             }
         }
     </style>
@@ -391,11 +542,16 @@
     <!-- Navigation -->
     <nav>
         <div class="logo">MALINDU.</div>
-        <ul class="nav-links">
+        <div class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <ul class="nav-links" id="navLinks">
             <li><a href="#home">Home</a></li>
             <li><a href="about.html">About</a></li>
             <li><a href="tele.html">Projects</a></li>
-            <li><a href="https://www.canva.com/design/DAGsAK0G-d0/8gFLHFu9-Tw36_RRYYhq6g/edit?utm_content=DAGsAK0G-d0&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton">Portfolio</a></li>
+            <li><a href="https://www.canva.com/design/DAGsAK0G-d0/8gFLHFu9-Tw36_RRYYhq6g/edit?utm_content=DAGsAK0G-d0&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" target="_blank">Portfolio</a></li>
             <li><a href="contact.html">Contact</a></li>
         </ul>
     </nav>
@@ -404,31 +560,71 @@
     <section class="hero" id="home">
         <div class="hero-content">
             <h1>Hi, I'm <span style="color: #00d4ff;">Malindu Kanishka</span></h1>
-            <div class="title">Telecommunications EngineerIGraphic Designer</div>
+            <div class="title">Telecommunications Engineer | Graphic Designer</div>
             <p>Undergraduate student specializing in telecommunications engineering with expertise in network design, signal processing, and creative graphic design solutions. Combining technical excellence with artistic vision.</p>
             
             <div class="button-group">
-            <a href="tele.html"><button class="btn btn-primary" onclick="openTelecomTab()">Telecommunication Engineering</button></a>
-                <a href="grapic.html"><button class="btn btn-secondary" onclick="openDesignTab()">Graphic Design</button></a>
+                <button class="btn btn-primary" onclick="openTelecomTab()">Telecom Engineering</button>
+                <button class="btn btn-secondary" onclick="openDesignTab()">Graphic Design</button>
             </div>
 
             <div class="social-links">
-                <a href="https://www.linkedin.com/in/malindu-k-457773364?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" title="LinkedIn"><i class="fab fa-linkedin"></i> </a>
-                <a href="https://github.com/Malindu200111" title="GitHub"><i class="fab fa-github"></i></a>
-                <a href="malindukanishka73@gmail.com" title="Email"><i class="fas fa-envelope"></i> </a>
-                <a href="https://www.tiktok.com/@pixel_e2001?_r=1&_d=ei966e512cgf0j&sec_uid=MS4wLjABAAAAOYQP9B5w53DR_47SeXP3O7I8udLH2aQ-kTd0VtuYXDAKRyg3ye-MYZkTzcZoUA2B&share_author_id=7390439238293406725&sharer_language=en&source=h5_m&u_code=ef5ai0kd4m5ekh&item_author_type=1&utm_source=copy&tt_from=copy&enable_checksum=1&utm_medium=ios&share_link_id=A9A9AF4B-A086-4467-A02E-E80522003574&user_id=7390439238293406725&sec_user_id=MS4wLjABAAAAOYQP9B5w53DR_47SeXP3O7I8udLH2aQ-kTd0VtuYXDAKRyg3ye-MYZkTzcZoUA2B&social_share_type=4&ug_btm=b8727,b0&utm_campaign=client_share&share_app_id=1233" title="tiktok"><i class="fab fa-tiktok"></i> </a>
-                 <a href="https://youtube.com/@malindu_kanishka_2001?si=Fx7mrvF9FM0ATCfB" title="youtube"><i class="fab fa-youtube"></i> </a>
-            </div>
-        </div>
-  <div class="hero-image">
-            <div class="hero-image-placeholder">
-                <img src="freepik_br_6cf32b9b-c60d-47a4-bbc0-dd4d953c4184.png" alt="Malindu Kanishka">
+                <a href="https://www.linkedin.com/in/malindu-k-457773364?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" title="LinkedIn" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/Malindu200111" title="GitHub" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="mailto:malindukanishka73@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+                <a href="https://www.tiktok.com/@pixel_e2001" title="TikTok" target="_blank"><i class="fab fa-tiktok"></i></a>
+                <a href="https://youtube.com/@malindu_kanishka_2001" title="YouTube" target="_blank"><i class="fab fa-youtube"></i></a>
             </div>
         </div>
 
-   
+        <div class="hero-image">
+            <div class="hero-image-placeholder">
+                <img src="freepik_br_6cf32b9b-c60d-47a4-bbc0-dd4d953c4184.png" alt="Malindu Kanishka Portfolio">
+            </div>
+        </div>
+    </section>
+
+    <!-- Telecom Modal -->
+    <div id="telecomModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeTelecomModal()">&times;</span>
+            <h2>Telecommunication Projects</h2>
+            <p>Enter your project links below to explore:</p>
+            <input type="url" class="modal-input" id="telecomUrl1" placeholder="Project Link 1">
+            <input type="url" class="modal-input" id="telecomUrl2" placeholder="Project Link 2">
+            <button class="modal-btn" onclick="saveTelecomLinks()">Open Links</button>
+            <button class="modal-btn modal-btn-cancel" onclick="closeTelecomModal()">Cancel</button>
+        </div>
+    </div>
+
+    <!-- Design Modal -->
+    <div id="designModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeDesignModal()">&times;</span>
+            <h2>Graphic Design Portfolio</h2>
+            <p>Enter your portfolio link:</p>
+            <input type="url" class="modal-input" id="designUrl" placeholder="Portfolio Link">
+            <button class="modal-btn" onclick="saveDesignLink()">Open Portfolio</button>
+            <button class="modal-btn modal-btn-cancel" onclick="closeDesignModal()">Cancel</button>
+        </div>
+    </div>
 
     <script>
+        // Hamburger Menu
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Close menu when link is clicked
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+
         // Telecom Modal
         function openTelecomTab() {
             document.getElementById("telecomModal").style.display = "block";
@@ -442,13 +638,13 @@
             const url1 = document.getElementById("telecomUrl1").value.trim();
             const url2 = document.getElementById("telecomUrl2").value.trim();
 
-            if (url1) window.open(url1, '_blank');
-            if (url2) window.open(url2, '_blank');
-
             if (!url1 && !url2) {
                 alert("Please enter at least one link");
                 return;
             }
+
+            if (url1) window.open(url1, '_blank');
+            if (url2) window.open(url2, '_blank');
 
             closeTelecomModal();
         }
@@ -479,10 +675,10 @@
             const telecomModal = document.getElementById("telecomModal");
             const designModal = document.getElementById("designModal");
 
-            if (event.target == telecomModal) {
+            if (event.target === telecomModal) {
                 telecomModal.style.display = "none";
             }
-            if (event.target == designModal) {
+            if (event.target === designModal) {
                 designModal.style.display = "none";
             }
         }
