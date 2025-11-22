@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact | Malindu Kanishka</title>
+
+<style>
+    body {
+        margin: 0;
+        font-family: "Poppins", sans-serif;
+        background: linear-gradient(135deg, #020b1b, #001628, #001f3f);
+        color: white;
+    }
+
+    .container {
+        width: 90%;
+        max-width: 1300px;
+        margin: auto;
+        padding: 60px 0;
+        display: flex;
+        justify-content: space-between;
+        gap: 50px;
+    }
+
+    h1 {
+        color: #18d2ff;
+        font-size: 42px;
+        margin-bottom: 10px;
+    }
+
+    h2 {
+        color: #18d2ff;
+        border-bottom: 2px solid #18d2ff;
+        display: inline-block;
+        padding-bottom: 6px;
+    }
+
+    /* LEFT SIDE FORM */
+    .contact-form {
+        width: 60%;
+    }
+
+    label {
+        display: block;
+        margin: 20px 0 8px;
+        font-weight: 500;
+    }
+
+    input, textarea {
+        width: 100%;
+        padding: 15px;
+        background: rgba(255,255,255,0.08);
+        border: 1px solid #0e2a47;
+        border-radius: 8px;
+        color: #e8f7ff;
+        font-size: 16px;
+        outline: none;
+    }
+
+    input:focus, textarea:focus {
+        border: 1px solid #18d2ff;
+        box-shadow: 0 0 5px #18d2ff;
+    }
+
+    textarea {
+        height: 180px;
+        resize: none;
+    }
+
+    .btn {
+        margin-top: 20px;
+        padding: 14px 30px;
+        border: none;
+        border-radius: 8px;
+        background: #18d2ff;
+        color: #00111f;
+        font-weight: 600;
+        cursor: pointer;
+        font-size: 16px;
+    }
+
+    /* RIGHT SIDE CONTACT DETAILS */
+    .contact-details {
+        width: 35%;
+    }
+
+    .item {
+        margin-bottom: 25px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-size: 18px;
+    }
+
+    .icon {
+        font-size: 22px;
+        color: #18d2ff;
+    }
+
+    .social-icons {
+        margin-top: 20px;
+        display: flex;
+        gap: 18px;
+    }
+
+    .social-icons i {
+        font-size: 26px;
+        color: #18d2ff;
+        cursor: pointer;
+    }
+</style>
+
+<!-- ICONS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+</head>
+<body>
+
+<section class="container">
+
+    <!-- LEFT — FORM -->
+    <div class="contact-form">
+        <h1>Contact Us</h1>
+        <h2>Get in touch</h2>
+
+        <label>Name</label>
+        <input type="text" placeholder="Enter your name">
+
+        <label>Email</label>
+        <input type="email" placeholder="Enter your email">
+
+        <label>Message</label>
+        <textarea placeholder="Write your message here..."></textarea>
+
+        <button class="btn">Send Message</button>
+    </div>
+
+    <!-- RIGHT — DETAILS --><br>
+     <br>
+     <br>
+    <div class="contact-details">
+        <h2>Contact Details</h2>
+
+        <div class="item">
+            <i class="fa-solid fa-phone icon"></i>
+            +94 781526440
+        </div>
+
+        <div class="item">
+            <i class="fa-solid fa-envelope icon"></i>
+            malindukanishka73@gmail.com
+        </div>
+
+        <div class="item">
+            <i class="fa-solid fa-location-dot icon"></i>
+            Colombo, Sri Lanka
+        </div>
+
+        <div class="social-icons">
+            <a href="https://www.linkedin.com/in/malindu-k-457773364?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" ><i class="fa-brands fa-linkedin"></i></a>
+            <a href="https://github.com/Malindu200111" title="GitHub"> <i class="fa-brands fa-github"></i></a>
+            <a href="https://www.facebook.com/share/17PveXcrJm/?mibextid=wwXIfr"><i class="fa-brands fa-facebook"></i></a>
+            <a href="https://www.instagram.com/malindukanishka9?igsh=ZzI0MWRteTExNmc5&utm_source=qr"><i class="fa-brands fa-instagram"></i></a>
+        </div>
+    </div>
+
+</section>
+
+</body>
+</html>
