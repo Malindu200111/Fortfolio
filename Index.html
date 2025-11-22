@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Telecommunications Engineer & Graphic Designer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #000409 0%, #040f23 50%, #0f1f35 100%);
+            color: #fff;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Navbar */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 30px 50px;
+            background: rgba(10, 22, 40, 0.8);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            color: #fff;
+            letter-spacing: 2px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: #00d4ff;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #00d4ff;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 80px 50px;
+            min-height: 90vh;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            flex: 1;
+            z-index: 2;
+            max-width: 600px;
+        }
+
+        .hero-content h1 {
+            font-size: 56px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            line-height: 1.2;
+        }
+
+        .hero-content .title {
+            font-size: 32px;
+            color: #00d4ff;
+            font-weight: 600;
+            margin-bottom: 30px;
+        }
+
+        .hero-content p {
+            font-size: 16px;
+            line-height: 1.8;
+            color: #b0c4de;
+            margin-bottom: 40px;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 50px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 15px 40px;
+            font-size: 16px;
+            font-weight: 600;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            border: 2px solid #00d4ff;
+            background: transparent;
+            color: #00d4ff;
+        }
+
+        .btn-primary {
+            background: #00d4ff;
+            color: #0a1628;
+        }
+
+        .btn-primary:hover {
+            background: #00a8cc;
+            border-color: #00a8cc;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.3);
+        }
+
+        .btn-secondary:hover {
+            background: #00d4ff;
+            color: #0a1628;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.2);
+        }
+
+        /* Social Links */
+        .social-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .social-links a {
+            width: 50px;
+            height: 50px;
+            border: 2px solid #00d4ff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #00d4ff;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 18px;
+        }
+
+        .social-links a:hover {
+            background: #00d4ff;
+            color: #0a1628;
+            transform: translateY(-5px);
+        }
+
+        
+        /* Hero Image */
+.hero-image {
+    flex: 1;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 500px; /* Reduced height */
+    margin-top: -150px; /* Moves image UP */
+}
+
+.hero-image-placeholder {
+    width: 850px;
+    height: 1000px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    border-radius: 20px;
+    margin-top: -300px; /* Extra lift upwards */
+}
+
+.hero-image-placeholder img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 18px;
+}
+
+        @keyframes shimmer {
+            0% {
+                left: -100%;
+            }
+            100% {
+                left: 100%;
+            }
+        }
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(5px);
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }background: rgba(10, 22, 40, 0.8);
+
+        .modal-content {
+            background: linear-gradient(135deg, rgba(10, 22, 40, 0.8) 0%, #0f1f35 100%);
+            margin: auto;
+            padding: 40px;
+            width: 90%;
+            max-width: 500px;
+            border-radius: 15px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            box-shadow: 0 20px 60px rgba(0, 212, 255, 0.2);
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            animation: slideIn 0.3s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translate(-50%, -60%);
+                opacity: 0;
+            }
+            to {
+                transform: translate(-50%, -50%);
+                opacity: 1;
+            }
+        }
+
+        .close {
+            color: #00d4ff;
+            float: right;
+            font-size: 32px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .close:hover {
+            color: #fff;
+        }
+
+        .modal h2 {
+            color: #00d4ff;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        .modal p {
+            color: #b0c4de;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .modal-input {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 2px solid rgba(0, 212, 255, 0.3);
+            border-radius: 8px;
+            font-size: 14px;
+            background: rgba(10, 22, 40, 0.6);
+            color: #fff;
+            transition: border-color 0.3s ease;
+        }
+
+        .modal-input:focus {
+            outline: none;
+            border-color: #00d4ff;
+            background: rgba(10, 22, 40, 0.8);
+        }
+
+        .modal-btn {
+            background: #00d4ff;
+            color: #0a1628;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            margin-right: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .modal-btn:hover {
+            background: #00a8cc;
+            transform: translateY(-2px);
+        }
+
+        .modal-btn-cancel {
+            background: transparent;
+            color: #00d4ff;
+            border: 2px solid #00d4ff;
+            margin-left: 10px;
+            margin-right: 0;
+        }
+
+        .modal-btn-cancel:hover {
+            background: #00d4ff;
+            color: #0a1628;
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                padding: 20px 30px;
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .nav-links {
+                gap: 20px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero {
+                flex-direction: column;
+                padding: 40px 20px;
+                text-align: center;
+            }
+
+            .hero-content h1 {
+                font-size: 36px;
+            }
+
+            .hero-content .title {
+                font-size: 24px;
+            }
+
+            .button-group {
+                justify-content: center;
+            }
+
+            .social-links {
+                justify-content: center;
+            }
+
+            .hero-image {
+                height: 300px;
+            }
+
+            .hero-image-placeholder {
+                width: 280px;
+                height: 350px;
+                font-size: 80px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">MALINDU.</div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="TELE.html">Projects</a></li>
+            <li><a href="https://www.canva.com/design/DAGsAK0G-d0/8gFLHFu9-Tw36_RRYYhq6g/edit?utm_content=DAGsAK0G-d0&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton">Portfolio</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Hi, I'm <span style="color: #00d4ff;">Malindu Kanishka</span></h1>
+            <div class="title">Telecommunications EngineerIGraphic Designer</div>
+            <p>Undergraduate student specializing in telecommunications engineering with expertise in network design, signal processing, and creative graphic design solutions. Combining technical excellence with artistic vision.</p>
+            
+            <div class="button-group">
+            <a href="TELE.HTML"><button class="btn btn-primary" onclick="openTelecomTab()">Telecommunication Engineering</button></a>
+                <a href="grapic.html"><button class="btn btn-secondary" onclick="openDesignTab()">Graphic Design</button></a>
+            </div>
+
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/malindu-k-457773364?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" title="LinkedIn"><i class="fab fa-linkedin"></i> </a>
+                <a href="https://github.com/Malindu200111" title="GitHub"><i class="fab fa-github"></i></a>
+                <a href="malindukanishka73@gmail.com" title="Email"><i class="fas fa-envelope"></i> </a>
+                <a href="https://www.tiktok.com/@pixel_e2001?_r=1&_d=ei966e512cgf0j&sec_uid=MS4wLjABAAAAOYQP9B5w53DR_47SeXP3O7I8udLH2aQ-kTd0VtuYXDAKRyg3ye-MYZkTzcZoUA2B&share_author_id=7390439238293406725&sharer_language=en&source=h5_m&u_code=ef5ai0kd4m5ekh&item_author_type=1&utm_source=copy&tt_from=copy&enable_checksum=1&utm_medium=ios&share_link_id=A9A9AF4B-A086-4467-A02E-E80522003574&user_id=7390439238293406725&sec_user_id=MS4wLjABAAAAOYQP9B5w53DR_47SeXP3O7I8udLH2aQ-kTd0VtuYXDAKRyg3ye-MYZkTzcZoUA2B&social_share_type=4&ug_btm=b8727,b0&utm_campaign=client_share&share_app_id=1233" title="tiktok"><i class="fab fa-tiktok"></i> </a>
+                 <a href="https://youtube.com/@malindu_kanishka_2001?si=Fx7mrvF9FM0ATCfB" title="youtube"><i class="fab fa-youtube"></i> </a>
+            </div>
+        </div>
+  <div class="hero-image">
+            <div class="hero-image-placeholder">
+                <img src="freepik_br_6cf32b9b-c60d-47a4-bbc0-dd4d953c4184.png" alt="Malindu Kanishka">
+            </div>
+        </div>
+
+   
+
+    <script>
+        // Telecom Modal
+        function openTelecomTab() {
+            document.getElementById("telecomModal").style.display = "block";
+        }
+
+        function closeTelecomModal() {
+            document.getElementById("telecomModal").style.display = "none";
+        }
+
+        function saveTelecomLinks() {
+            const url1 = document.getElementById("telecomUrl1").value.trim();
+            const url2 = document.getElementById("telecomUrl2").value.trim();
+
+            if (url1) window.open(url1, '_blank');
+            if (url2) window.open(url2, '_blank');
+
+            if (!url1 && !url2) {
+                alert("Please enter at least one link");
+                return;
+            }
+
+            closeTelecomModal();
+        }
+
+        // Design Modal
+        function openDesignTab() {
+            document.getElementById("designModal").style.display = "block";
+        }
+
+        function closeDesignModal() {
+            document.getElementById("designModal").style.display = "none";
+        }
+
+        function saveDesignLink() {
+            const url = document.getElementById("designUrl").value.trim();
+
+            if (!url) {
+                alert("Please enter a portfolio link");
+                return;
+            }
+
+            window.open(url, '_blank');
+            closeDesignModal();
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const telecomModal = document.getElementById("telecomModal");
+            const designModal = document.getElementById("designModal");
+
+            if (event.target == telecomModal) {
+                telecomModal.style.display = "none";
+            }
+            if (event.target == designModal) {
+                designModal.style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html>
